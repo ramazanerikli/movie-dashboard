@@ -43,5 +43,50 @@ export default {
   text-align: center;
   color: $primary;
 }
+.vote-average {
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  background: #333;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card.movie-card {
+  border: 0;
+}
+.card.movie-card .movie-action {
+  position: relative;
+}
+.card.movie-card .vote-average {
+  position: absolute;
+  bottom: -20px;
+  left: 10px;
+}
+.card.movie-card .movie-title {
+  font-weight: bold;
+}
+.card.movie-card .movie-poster {
+  max-width: 100%;
+}
+.card.movie-card .add-favorite {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+}
+.card.movie-card .add-favorite.unfavorite {
+  color: #ebebeb;
+  font-size: 1.4rem;
+}
+.card.movie-card .add-favorite.favorite {
+  color: #FF3040;
+  font-size: 1.4rem;
+}
+.card.movie-card .card-body {
+  margin-top: 10px;
+  text-align: left;
+}
 
 </style>
