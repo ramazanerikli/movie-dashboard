@@ -1,9 +1,22 @@
 <template>
-  <div id="nav">
-    <router-link to="/">go to Home</router-link> 
-    <router-link to="/detail">go to Detail</router-link>
-    <router-link to="/favorites">go to Favorites</router-link>
-  </div>
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active">
+            <router-link to="/">Home</router-link> 
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
+            <router-link to="/favorites">Favorites</router-link>
+          </a>
+        </li>
+      </ul>
+      </div>
+    </div>
+  </nav>
   <router-view></router-view>
 </template>
 
@@ -29,7 +42,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: $primary;
-  margin-top: 60px;
 }
 
 </style>
