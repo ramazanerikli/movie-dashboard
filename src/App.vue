@@ -1,8 +1,10 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js Appss"/>
-  <button class="btn btn-primary">Bootstrap Button</button>
-
+  <div id="nav">
+    <router-link to="/">go to Home</router-link> 
+    <router-link to="/detail">go to Detail</router-link>
+    <router-link to="/favorites">go to Favorites</router-link>
+  </div>
+  <router-view></router-view>
 </template>
 
 <script>
