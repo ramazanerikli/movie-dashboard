@@ -1,19 +1,19 @@
 <template>
   <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
+    <div class="container-sm">
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active">
-            <router-link to="/">Home</router-link> 
-          </a>
+            <router-link to="/" class="nav-link active">Home</router-link> 
         </li>
         <li class="nav-item">
-          <a class="nav-link">
-            <router-link to="/favorites">Favorites</router-link>
-          </a>
+            <router-link to="/favorites" class="nav-link">Favorites</router-link>
         </li>
       </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
       </div>
     </div>
   </nav>
@@ -39,7 +39,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: $primary;
+  color: black;
 }
 .vote-average {
   width: 40px;
@@ -66,19 +66,21 @@ export default {
 .card.movie-card .movie-title {
   font-weight: bold;
 }
-.card.movie-card .movie-poster {
+.movie-poster {
   max-width: 100%;
 }
-.card.movie-card .add-favorite {
+.add-favorite {
   position: absolute;
   right: 20px;
   top: 10px;
+  z-index: 3;
+  cursor: pointer;
 }
-.card.movie-card .add-favorite.unfavorite {
+.add-favorite.unfavorite {
   color: #ebebeb;
   font-size: 1.4rem;
 }
-.card.movie-card .add-favorite.favorite {
+.add-favorite.favorite {
   color: #FF3040;
   font-size: 1.4rem;
 }
@@ -86,5 +88,13 @@ export default {
   margin-top: 10px;
   text-align: left;
 }
-
+.movie-item-wrapper {
+  text-decoration: none;
+}
+.movie-poster {
+  border-radius: 8px;
+}
+.movie-item {
+  position: relative;
+}
 </style>

@@ -1,8 +1,29 @@
 <template>
-  <div>{{movie.title}}</div>
- <!--  {{this.$route.params.Mid}} -->
+  
 
-
+  <div class="page-container container-sm">
+    <div class="row detail-inner py-4">
+      <div class="col-4">
+        <div class="movie-poster-field">
+          <img class="movie-poster" :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`">
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="movie-info-field text-start">
+          <h2 class="movie-title">{{movie.title}}</h2>
+          <div class="movie-meta">
+            <span>{{ movie.release_date  }}</span>
+          </div>
+          <div class="movie-overview">
+            <h3>Overview</h3>
+            <p>
+              {{ movie.overview }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </template>
 <script>

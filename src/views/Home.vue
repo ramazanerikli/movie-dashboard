@@ -1,5 +1,5 @@
 <template>
-  <div class="page-container container-fluid">
+  <div class="page-container container-sm">
 
     <h1 class="text-start my-3">Popular Movies</h1>
 
