@@ -10,10 +10,7 @@
             <router-link to="/favorites" class="nav-link">Favorites</router-link>
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+        <SearchBar/>
       </div>
     </div>
   </nav>
@@ -22,12 +19,14 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import SearchBar from "./components/SearchBar.vue"
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    HelloWorld,
+    SearchBar
+}
 }
 </script>
 
@@ -96,5 +95,16 @@ export default {
 }
 .movie-item {
   position: relative;
+}
+.search-results {
+  z-index: 4;
+}
+.search-results ul {
+  background: #ebebeb;
+  padding: 20px;
+  min-width: 250px;
+  border-radius: 4px;
+  max-height: 300px;
+  overflow-y: scroll;
 }
 </style>
