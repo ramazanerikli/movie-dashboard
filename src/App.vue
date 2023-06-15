@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-light">
+  <nav class="navbar navbar-expand-lg">
     <div class="container-sm">
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -14,7 +14,7 @@
       </div>
     </div>
   </nav>
-  <router-view></router-view>
+  <router-view :key="$route.fullPath"></router-view>
 </template>
 
 <script>
@@ -100,11 +100,30 @@ export default {
   z-index: 4;
 }
 .search-results ul {
-  background: #ebebeb;
+  background-color: #042541;
   padding: 20px;
   min-width: 250px;
   border-radius: 4px;
   max-height: 300px;
   overflow-y: scroll;
+}
+.navbar {
+  background-color: #042541;
+}
+.navbar .navbar-nav .nav-link {
+  color: $nav-link-color;
+  font-weight: bold;
+}
+.navbar .navbar-nav .nav-link.active {
+  color: $nav-link-color;
+  font-weight: bold;
+}
+.search-wrapper input {
+  padding-left: 40px;
+}
+.search-wrapper .search-icon {
+  top: 6px;
+  left: 10px;
+  font-size: 1.2rem;
 }
 </style>

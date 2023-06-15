@@ -1,13 +1,17 @@
 <template>
   <div class="position-relative">
-    <form class="d-flex" role="search">
+    <form class="search-wrapper d-flex position-relative" role="search">
+      <div class="search-icon position-absolute">
+        <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
+      </div>
       <input @input="debounceSearch" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
     <div v-if="searchResult.length != 0" class="position-absolute search-results">
       <ul class="list-unstyled mt-3">
         <li :key="index" v-for="(movie, index) in searchResult" class="d-flex mb-2">
-          <a>{{ movie.name }}</a>
+          <router-link :to="`/detail/${movie.id}`">
+            <a class="text-capitalize text-white text-decoration-none">{{ movie.title }}</a>
+          </router-link>
         </li>
       </ul>
     </div>
@@ -32,12 +36,7 @@ export default{
     },
     fetchSearch(term) {
 
-
-        axios.get(`https://api.themoviedb.org/3/search/keyword?query=${term}&api_key=bc3678651b1e8f0bd3ee98d5e1052b24`, {
-    params: {
-      api_key: 'YOUR_API_KEY'
-    }
-  })
+        axios.get(`https://api.themoviedb.org/3/search/movie?query=${term}&api_key=bc3678651b1e8f0bd3ee98d5e1052b24&include_adult=false&language=en-US`)
   .then(response => {
     this.searchResult = response.data.results;
     console.log(response.data.results)
