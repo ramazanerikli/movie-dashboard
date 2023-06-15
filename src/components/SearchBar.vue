@@ -9,8 +9,8 @@
     <div v-if="searchResult.length != 0" class="position-absolute search-results">
       <ul class="list-unstyled mt-3">
         <li :key="index" v-for="(movie, index) in searchResult" class="d-flex mb-2 text-start">
-          <router-link :to="`/detail/${movie.id}`">
-            <a class="text-capitalize text-white text-decoration-none">{{ movie.title }}</a>
+          <router-link :to="`/detail/${movie.id}`" class="text-capitalize text-white text-decoration-none">
+            {{ movie.title }}
           </router-link>
         </li>
       </ul>
