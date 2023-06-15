@@ -1,24 +1,20 @@
-# movie-dashboard
+# Movie Dashboard
 
-## Project setup
-```
-npm install
-```
+A [movie dashboard app](https://vue-beta-orcin.vercel.app) which allows users to view movie data.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Implemented Features
 
-### Compiles and minifies for production
-```
-npm run build
-```
+- Search movies through the TMDB movie database
+- Add selected movie to your favorites list
+- View popular movies
+- Navigate to a selected movie and view data includes movie title, rating, production companies, overview, tagline, genres, original language, and movie poster image. 
 
-### Lints and fixes files
-```
-npm run lint
-```
+## Used Technology
+- Vue.JS
+- Vuex
+- Vue Router
+- Bootstrap
+- SASS
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
