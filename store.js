@@ -15,6 +15,9 @@ export default createStore({
   getters: {
     getFavoriteMovies(state) {
       return state.favoriteMovies;
+    },
+    isMovieFavorite: (state) => (movieId) => {
+      return state.favoriteMovies.some(movie => movie.id === movieId);
     }
   }
 })

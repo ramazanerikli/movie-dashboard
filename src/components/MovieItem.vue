@@ -29,8 +29,11 @@ import store from "../../store";
     },
     methods: {
       addToFavorite(movie) {
-        movie.isFavorite = true; 
-        store.commit('addFavoriteMovie', movie);
+        const isFavorite = this.$store.getters['isMovieFavorite'](movie.id);
+        if(!isFavorite) {
+          movie.isFavorite = true;
+          store.commit('addFavoriteMovie', movie);
+        }
       },
     }
   }
