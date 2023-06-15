@@ -143,4 +143,22 @@ export default {
     margin: 0;
   }
 }
+.companies-list {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.companies-list img {
+  max-width: 100px;
+}
+.companies-list li {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.movie-poster-field .vote-average {
+  bottom: -20px;
+  left: 20px;
+}
 </style>
