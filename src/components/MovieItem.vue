@@ -1,6 +1,6 @@
 <template>
   <div class="col movie-item">
-    <div class="add-favorite" :class="{ 'favorite': movie.isFavorite }" @click="addToFavorite(movie)">
+    <div class="add-favorite" :class="{ 'favorite': this.$store.getters['isMovieFavorite'](movie.id) }" @click="addToFavorite(movie)">
         <font-awesome-icon icon="fa-solid fa-heart" />
     </div>
     <router-link :to="`/detail/${movie.id}`" class="movie-item-wrapper">
