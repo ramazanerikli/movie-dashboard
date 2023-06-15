@@ -7,6 +7,9 @@ export default createStore({
   mutations: {
     addFavoriteMovie(state, movie) {
       state.favoriteMovies.push(movie);
+    },
+    removeFavoriteMovie(state, movieId) {
+      state.favoriteMovies = state.favoriteMovies.filter(movie => movie.id !== movieId);
     }
   },
   actions: {

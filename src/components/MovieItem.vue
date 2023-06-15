@@ -30,7 +30,9 @@ import store from "../../store";
     methods: {
       addToFavorite(movie) {
         const isFavorite = this.$store.getters['isMovieFavorite'](movie.id);
-        if(!isFavorite) {
+        if(isFavorite) {
+          store.commit('removeFavoriteMovie', movie.id);
+        } else {
           movie.isFavorite = true;
           store.commit('addFavoriteMovie', movie);
         }
