@@ -1,6 +1,4 @@
 <template>
-
-
   <div class="movie-item">
     <div class="add-favorite" :class="{ 'favorite': movie.isFavorite }" @click="addToFavorite(movie)">
         <font-awesome-icon icon="fa-solid fa-heart" />
@@ -34,7 +32,6 @@ import store from "../../store";
         movie.isFavorite = true; 
         store.commit('addFavoriteMovie', movie);
       },
-      
     }
   }
 </script>

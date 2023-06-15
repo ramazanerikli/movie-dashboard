@@ -1,0 +1,22 @@
+<template>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-sm">
+      <div class="navbar-inner w-100">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+            <router-link to="/" class="nav-link active">Home</router-link> 
+        </li>
+        <li class="nav-item">
+            <router-link to="/favorites" class="nav-link">Favorites</router-link>
+        </li>
+      </ul>
+        <SearchBar></SearchBar>
+    </div>
+    </div>
+  </nav>
+  <router-view :key="$route.fullPath"></router-view>
+</template>
+<script>
+import SearchBar from "../components/SearchBar.vue"
+export default { components: { SearchBar } }
+</script>

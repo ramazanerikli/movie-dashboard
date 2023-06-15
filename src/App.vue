@@ -1,164 +1,19 @@
-<template>
-  <nav class="navbar navbar-expand-lg">
-    <div class="container-sm">
-      <div class="navbar-inner w-100">
-      <ul class="navbar-nav mb-2 mb-lg-0">
-        <li class="nav-item">
-            <router-link to="/" class="nav-link active">Home</router-link> 
-        </li>
-        <li class="nav-item">
-            <router-link to="/favorites" class="nav-link">Favorites</router-link>
-        </li>
-      </ul>
-        <SearchBar/>
-    </div>
-    </div>
-  </nav>
-  <router-view :key="$route.fullPath"></router-view>
-</template>
 
+<template>
+  <Nav></Nav>
+</template>
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import SearchBar from "./components/SearchBar.vue"
+import Nav from "./components/Nav.vue"
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
-    SearchBar
+    Nav
 },
 }
 </script>
 
 <style lang="scss">
 @import './styles/main.scss';
-
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: black;
-}
-.vote-average {
-  width: 40px;
-  height: 40px;
-  border-radius: 40px;
-  background: #333;
-  color: white;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.card.movie-card {
-  border: 0;
-}
-.card.movie-card .movie-action {
-  position: relative;
-}
-.card.movie-card .vote-average {
-  position: absolute;
-  bottom: -20px;
-  left: 10px;
-}
-.card.movie-card .movie-title {
-  font-weight: bold;
-}
-.movie-poster {
-  max-width: 100%;
-}
-.add-favorite {
-  position: absolute;
-  right: 20px;
-  top: 10px;
-  z-index: 3;
-  cursor: pointer;
-}
-.add-favorite {
-  color: #ebebeb;
-  font-size: 1.4rem;
-}
-.add-favorite.favorite {
-  color: #FF3040;
-  font-size: 1.4rem;
-}
-.card.movie-card .card-body {
-  margin-top: 10px;
-  text-align: left;
-}
-.movie-item-wrapper {
-  text-decoration: none;
-}
-.movie-poster {
-  border-radius: 8px;
-}
-.movie-item {
-  position: relative;
-}
-.search-results {
-  z-index: 4;
-}
-.search-results ul {
-  background-color: #042541;
-  padding: 20px;
-  min-width: 250px;
-  border-radius: 4px;
-  max-height: 300px;
-  overflow-y: scroll;
-}
-.navbar {
-  background-color: #042541;
-}
-.navbar .navbar-nav .nav-link {
-  color: $nav-link-color;
-  font-weight: bold;
-}
-.navbar .navbar-nav .nav-link.active {
-  color: $nav-link-color;
-  font-weight: bold;
-}
-.search-wrapper input {
-  padding-left: 40px;
-}
-.search-wrapper .search-icon {
-  top: 6px;
-  left: 10px;
-  font-size: 1.2rem;
-}
-.navbar-inner {
-  display: flex;
-  justify-content: space-between;
-}
-@media screen and (max-width: 780px) {
-  .navbar-inner {
-    flex-direction: column;
-  }
-  ul.navbar-nav {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    margin: 0;
-  }
-}
-.companies-list {
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
-.companies-list img {
-  max-width: 100px;
-}
-.companies-list li {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.movie-poster-field .vote-average {
-  bottom: -20px;
-  left: 20px;
-}
+@import './styles/variables.scss';
 </style>

@@ -8,7 +8,7 @@
     </form>
     <div v-if="searchResult.length != 0" class="position-absolute search-results">
       <ul class="list-unstyled mt-3">
-        <li :key="index" v-for="(movie, index) in searchResult" class="d-flex mb-2">
+        <li :key="index" v-for="(movie, index) in searchResult" class="d-flex mb-2 text-start">
           <router-link :to="`/detail/${movie.id}`">
             <a class="text-capitalize text-white text-decoration-none">{{ movie.title }}</a>
           </router-link>
@@ -26,7 +26,6 @@ export default{
       searchResult: []
     }
   },
-
   methods: {
     debounceSearch(event) {
       clearTimeout(this.debounce);
@@ -35,16 +34,15 @@ export default{
       }, 600)
     },
     fetchSearch(term) {
-
-        axios.get(`https://api.themoviedb.org/3/search/movie?query=${term}&api_key=bc3678651b1e8f0bd3ee98d5e1052b24&include_adult=false&language=en-US`)
-  .then(response => {
-    this.searchResult = response.data.results;
-    console.log(response.data.results)
-  })
-  .catch(error => {
-    console.log(error);
-  });
+      axios.get(`https://api.themoviedb.org/3/search/movie?query=${term}&api_key=bc3678651b1e8f0bd3ee98d5e1052b24&include_adult=false&language=en-US`)
+      .then(response => {
+        this.searchResult = response.data.results;
+        console.log(response.data.results)
+      })
+      .catch(error => {
+        console.log(error);
+      });
+      }
     }
-  }
 }
 </script>
