@@ -1,7 +1,7 @@
 <template>
   <div class="page-container container-sm">
     <h1 class="text-start my-3">Popular Movies</h1>
-    <div class="movies-list d-flex flex-row flex-wrap gap-3">
+    <div class="movies-list row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
       <MovieItem v-for="(movie, index) in popularMovies" :key="index" :movie="movie" />
     </div>
   </div>

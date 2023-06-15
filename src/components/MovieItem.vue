@@ -1,10 +1,10 @@
 <template>
-  <div class="movie-item">
+  <div class="col movie-item">
     <div class="add-favorite" :class="{ 'favorite': movie.isFavorite }" @click="addToFavorite(movie)">
         <font-awesome-icon icon="fa-solid fa-heart" />
     </div>
     <router-link :to="`/detail/${movie.id}`" class="movie-item-wrapper">
-    <div class="card movie-card" style="width: 18rem;">
+    <div class="card movie-card">
           <div class="movie-action">
             <img class="movie-poster" :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`">
             <span class="vote-average">{{ movie.vote_average }}</span>
