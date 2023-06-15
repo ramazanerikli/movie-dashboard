@@ -1,6 +1,8 @@
 <template>
   <div class="page-container container-sm">
 
+
+
     <h1 class="text-start my-3">Popular Movies</h1>
 
 
@@ -14,6 +16,8 @@
 <script>
 
 import axios from 'axios'
+import store from "../../store";
+
 import MovieItem from "../components/MovieItem.vue";
 
 export default {
@@ -22,26 +26,20 @@ export default {
   },
   data() {
     return {
-      popularMovies: []
+      popularMovies: [],
     }
   },
   methods: {
     goToDetail(MovId) {
       this.$router.push({name: 'DetailPage', params:{Mid:MovId }})
-    }
+    },
   },
   mounted() {
 
-    
-
-    axios.get('https://api.themoviedb.org/3/movie/popular?api_key=bc3678651b1e8f0bd3ee98d5e1052b24&language=en-US&page=1', {
-    params: {
-      api_key: 'YOUR_API_KEY'
-    }
-  })
+    axios.get('https://api.themoviedb.org/3/movie/popular?api_key=bc3678651b1e8f0bd3ee98d5e1052b24&language=en-US&page=1')
   .then(response => {
     this.popularMovies = response.data.results;
-    console.log(response.data.results)
+    this.popularMovies = popularMovies.map(movie => ({ ...movie, isFavorite: false }));
   })
   .catch(error => {
     console.log(error);
@@ -49,24 +47,4 @@ export default {
   }
 }
   
- /* var movies = []
-  async function getMovies() {   
- const data = axios.get('https://api.themoviedb.org/3/movie/popular?api_key=bc3678651b1e8f0bd3ee98d5e1052b24&language=en-US&page=1')
- const result = await data
-    result.data.results.forEach((movie) => {
-      movies.push(movie)
-    })
-    console.log(movies);
-  }
-
-  async function fetch() {  
-    await this.getMovies()
-  }
-
-  
-
-
-
-getMovies() */
-
 </script>

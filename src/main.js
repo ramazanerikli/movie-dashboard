@@ -10,6 +10,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 library.add(faUserSecret, faHeart, faMagnifyingGlass)
 
+import store from "../store";
 
 // Bootstrap
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -18,4 +19,4 @@ import "bootstrap/dist/css/bootstrap.css";
 // Custom
 import "./styles/main.scss";
 
-createApp(App).use(router).component('font-awesome-icon', FontAwesomeIcon).mount('#app')
+createApp(App).use(router).component('font-awesome-icon', FontAwesomeIcon).use(store).mount('#app')

@@ -2,7 +2,7 @@
 
 
   <div class="movie-item">
-    <div class="add-favorite unfavorite">
+    <div class="add-favorite" :class="{ 'favorite': movie.isFavorite }" @click="addToFavorite(movie)">
         <font-awesome-icon icon="fa-solid fa-heart" />
     </div>
     <router-link :to="`/detail/${movie.id}`" class="movie-item-wrapper">
@@ -21,11 +21,20 @@
 
 </template>
 <script>
+import store from "../../store";
+
   export default {
     props: {
       movie: {
         required: true
-      }
+      },
+    },
+    methods: {
+      addToFavorite(movie) {
+        movie.isFavorite = true; 
+        store.commit('addFavoriteMovie', movie);
+      },
+      
     }
   }
 </script>

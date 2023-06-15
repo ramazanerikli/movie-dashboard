@@ -1,8 +1,8 @@
 <template>
   <nav class="navbar navbar-expand-lg">
     <div class="container-sm">
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <div class="navbar-inner w-100">
+      <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item">
             <router-link to="/" class="nav-link active">Home</router-link> 
         </li>
@@ -11,7 +11,7 @@
         </li>
       </ul>
         <SearchBar/>
-      </div>
+    </div>
     </div>
   </nav>
   <router-view :key="$route.fullPath"></router-view>
@@ -26,7 +26,7 @@ export default {
   components: {
     HelloWorld,
     SearchBar
-}
+},
 }
 </script>
 
@@ -75,7 +75,7 @@ export default {
   z-index: 3;
   cursor: pointer;
 }
-.add-favorite.unfavorite {
+.add-favorite {
   color: #ebebeb;
   font-size: 1.4rem;
 }
@@ -125,5 +125,22 @@ export default {
   top: 6px;
   left: 10px;
   font-size: 1.2rem;
+}
+.navbar-inner {
+  display: flex;
+  justify-content: space-between;
+}
+@media screen and (max-width: 780px) {
+  .navbar-inner {
+    flex-direction: column;
+  }
+  ul.navbar-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 0;
+  }
 }
 </style>
