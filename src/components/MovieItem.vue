@@ -20,6 +20,8 @@
 </template>
 <script>
 import store from "../../store";
+import {useToast} from 'vue-toast-notification';
+const $toast = useToast();
 
   export default {
     props: {
@@ -32,9 +34,21 @@ import store from "../../store";
         const isFavorite = this.$store.getters['isMovieFavorite'](movie.id);
         if(isFavorite) {
           store.commit('removeFavoriteMovie', movie.id);
+          $toast.open({
+            message: `${movie.title} was removed from your favorite list`,
+            type: "success",
+            duration: 3000,
+            dismissible: true
+          })
         } else {
           movie.isFavorite = true;
           store.commit('addFavoriteMovie', movie);
+          $toast.open({
+            message: `${movie.title} was added to your favorite list`,
+            type: "success",
+            duration: 3000,
+            dismissible: true
+          })
         }
       },
     }
