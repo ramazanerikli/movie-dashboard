@@ -19,9 +19,9 @@
             <ul class="d-flex flex-row gap-3 ps-3 pe-1">
               <li v-for="(genre, index) in movie.genres" :key="index" class="me-2">
                 <span>{{  genre.name  }}</span>
-            </li>
+              </li>
+              <li>{{ convertMinsToHours(movie.runtime) }}</li>
             </ul>
-            <span>{{ convertMinsToHours(movie.runtime) }}</span>
           </div>
           <div class="movie-overview">
             <h3>Overview</h3>
@@ -33,10 +33,10 @@
             <h5 class="sub-title my-4">Production Companies</h5>
             <ul class="companies-list list-unstyled">
               <li v-for="(company, index) in movie.production_companies" :key="index">
-              <div class="company-logo">
-                <img class="thumb" :src="`https://image.tmdb.org/t/p/w500/${company.logo_path}`">
-              </div>
-            </li>
+                <div class="company-logo">
+                  <img class="thumb" :src="`https://image.tmdb.org/t/p/w500/${company.logo_path}`" @error="imageLoadError">
+                </div>
+              </li>
             </ul>
           </div>
         </div>
@@ -56,10 +56,13 @@ const $toast = useToast();
   data(){
    return{
     id: this.$route.params.Mid,
-    movie: []
+    movie: [],
    }
   },
   methods: {
+    imageLoadError (e) {
+      e.target.src = require("@/assets/logo.png");
+    },
     convertMinsToHours(a){
       var hours = Math.trunc(a/60);
       var minutes = a % 60;
