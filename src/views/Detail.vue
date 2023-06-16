@@ -7,14 +7,21 @@
             <font-awesome-icon icon="fa-solid fa-heart" />
           </div>
           <img class="movie-poster" :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`">
-          <span class="vote-average position-absolute">{{ movie.vote_average }}</span>
+          <span class="vote-average position-absolute">{{ parseFloat(movie.vote_average).toFixed(1) }}</span>
         </div>
       </div>
-      <div class="col-lg-8">
+      <div class="col-lg-8 d-flex align-items-center">
         <div class="movie-info-field text-start">
           <h2 class="movie-title">{{movie.title}}</h2>
-          <div class="movie-meta">
+          <div class="d-flex movie-meta">
             <span>{{ movie.release_date  }}</span>
+            <span class="text-uppercase ms-2 me-2">({{  movie.original_language  }})</span>
+            <ul class="d-flex flex-row gap-3 ps-3 pe-1">
+              <li v-for="(genre, index) in movie.genres" :key="index" class="me-2">
+                <span>{{  genre.name  }}</span>
+            </li>
+            </ul>
+            <span>{{ convertMinsToHours(movie.runtime) }}</span>
           </div>
           <div class="movie-overview">
             <h3>Overview</h3>
@@ -22,15 +29,7 @@
               {{ movie.overview }}
             </p>
             <h5 class="sub-title my-2">Tagline</h5>
-            <span>{{  movie.tagline  }}</span>
-            <h5 class="sub-title my-3">Genres</h5>
-            <ul class="d-flex flex-row list-unstyled gap-3">
-              <li v-for="(genre, index) in movie.genres" :key="index">
-                <span>{{  genre.name  }}</span>
-            </li>
-            </ul>
-            <h5 class="sub-title my-3">Original Language</h5>
-            <span class="text-uppercase">{{  movie.original_language  }}</span>
+            <span class="fst-italic">{{  movie.tagline  }}</span>
             <h5 class="sub-title my-4">Production Companies</h5>
             <ul class="companies-list list-unstyled">
               <li v-for="(company, index) in movie.production_companies" :key="index">
@@ -61,6 +60,11 @@ const $toast = useToast();
    }
   },
   methods: {
+    convertMinsToHours(a){
+      var hours = Math.trunc(a/60);
+      var minutes = a % 60;
+      return hours + "h "+minutes + "m";
+      },
       addToFavorite(movie) {
         const isFavorite = this.$store.getters['isMovieFavorite'](movie.id);
         if(isFavorite) {
@@ -92,6 +96,7 @@ const $toast = useToast();
   })
   .then(response => {
     this.movie = response.data;
+    console.log(this.movie)
   })
   .catch(error => {
     console.log(error);
