@@ -3,6 +3,9 @@
     <div class="row detail-inner py-4">
       <div class="col-lg-4">
         <div class="movie-poster-field position-relative mb-5 mb-lg-0 mb-md-0">
+          <div class="add-favorite" :class="{ 'favorite': this.$store.getters['isMovieFavorite'](movie.id) }" @click="addToFavorite(movie)">
+            <font-awesome-icon icon="fa-solid fa-heart" />
+          </div>
           <img class="movie-poster" :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`">
           <span class="vote-average position-absolute">{{ movie.vote_average }}</span>
         </div>
@@ -45,6 +48,8 @@
 </template>
 <script>
 import axios from 'axios';
+import store from "../../store";
+
  export default{
   name:'detail',
   data(){
@@ -53,6 +58,17 @@ import axios from 'axios';
     movie: []
    }
   },
+  methods: {
+      addToFavorite(movie) {
+        const isFavorite = this.$store.getters['isMovieFavorite'](movie.id);
+        if(isFavorite) {
+          store.commit('removeFavoriteMovie', movie.id);
+        } else {
+          movie.isFavorite = true;
+          store.commit('addFavoriteMovie', movie);
+        }
+      },
+    },
   mounted() {
     axios.get
     (`https://api.themoviedb.org/3/movie/${this.id}?&language=en-US`, {
