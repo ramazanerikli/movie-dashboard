@@ -8,15 +8,7 @@
           </div>
           <img class="movie-poster" :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`"  @error="imageLoadError">
           <div class="vote-average position-absolute">
-             <svg class="stat-circle" width="150" viewBox="0 0 20 20">
-                <circle class="circle-bg" cx="10" cy="10" r="8" />
-                <circle :class="getProgressClass(movie.vote_average)" cx="10" cy="10" r="8" :style="{ 'stroke-dashoffset': calculateOffset(movie.vote_average) }" />
-                <circle class="circle-middle" cx="10" cy="10" r="7" />
-                <text class="circle-text" x="50%" y="50%" text-anchor="middle" dominant-baseline="middle">
-                  <tspan class="percentage-text">{{ formatPercentage( movie.vote_average * 10) }}</tspan>
-                  <tspan class="percentage-symbol">%</tspan>
-                </text>
-              </svg>
+            <StatCircle :movie="movie" />
             </div>
         </div>
       </div>
@@ -59,8 +51,12 @@
 import axios from 'axios';
 import store from "../../store";
 import {useToast} from 'vue-toast-notification';
+import StatCircle from '@/components/StatCircle.vue';
 const $toast = useToast();
  export default{
+  components: {
+    StatCircle
+  },
   data(){
    return{
     id: this.$route.params.Mid,
