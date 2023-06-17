@@ -8,9 +8,10 @@
           <div class="movie-action">
             <img class="movie-poster" :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`">
             <div class="vote-average">
-             <svg class="stat-circle" :style="{ '--progress': calculateProgress(movie.score) }" width="150" viewBox="0 0 20 20">
+             <svg class="stat-circle" width="60" height="60" viewBox="0 0 20 20">
                 <circle class="circle-bg" cx="10" cy="10" r="8" />
                 <circle :class="getProgressClass(movie.vote_average)" cx="10" cy="10" r="8" :style="{ 'stroke-dashoffset': calculateOffset(movie.vote_average) }" />
+                <circle class="circle-middle" cx="10" cy="10" r="7" />
                 <text class="circle-text" x="50%" y="50%" text-anchor="middle" dominant-baseline="middle">
                   <tspan class="percentage-text">{{ formatPercentage( movie.vote_average * 10) }}</tspan>
                   <tspan class="percentage-symbol">%</tspan>
