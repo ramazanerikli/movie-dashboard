@@ -4,7 +4,7 @@
         <font-awesome-icon icon="fa-solid fa-heart" />
     </div>
     <router-link :to="`/detail/${movie.id}`" class="movie-item-wrapper">
-      <div class="card movie-card">
+      <div class="card movie-card" >
           <div class="movie-action">
             <img class="movie-poster" :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`">
             <div class="vote-average">
@@ -12,7 +12,7 @@
             </div>
           </div>
           <div class="card-body">
-            <h5 class="movie-title">{{ movie.title }}</h5>
+            <h5 class="movie-title" >{{ movie.title }}</h5>
             <p class="release-date text-muted small">{{  movie.release_date  }}</p>
           </div>
       </div>
@@ -59,6 +59,5 @@ const $toast = useToast();
             }
         },
     },
-    components: { StatCircle, StatCircle }
 }
 </script>

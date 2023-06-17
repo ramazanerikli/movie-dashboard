@@ -1,6 +1,10 @@
 <template>
   <div class="page-container container-sm">
-    <div class="row detail-inner py-4">
+    <div v-if="loading" class="loading-container">
+      <LoadingSpinner />
+    </div>
+    <div v-else>
+      <div class="row detail-inner py-4">
       <div class="col-lg-4">
         <div class="movie-poster-field position-relative mb-5 mb-lg-0 mb-md-0">
           <div class="add-favorite" :class="{ 'favorite': this.$store.getters['isMovieFavorite'](movie.id) }" @click="addToFavorite(movie)">
@@ -44,6 +48,7 @@
         </div>
       </div>
     </div>
+    </div>
   </div>
 
 </template>
@@ -52,15 +57,19 @@ import axios from 'axios';
 import store from "../../store";
 import {useToast} from 'vue-toast-notification';
 import StatCircle from '@/components/StatCircle.vue';
+import LoadingSpinner from "../components/LoadingSpinner.vue";
+
 const $toast = useToast();
  export default{
   components: {
-    StatCircle
+    StatCircle,
+    LoadingSpinner
   },
   data(){
    return{
     id: this.$route.params.Mid,
-    movie: []
+    movie: [],
+    loading: true,
    }
   },
   computed: {
@@ -120,19 +129,25 @@ const $toast = useToast();
           })
         }
       },
+      fetchSingleMovie() {
+      axios.get(`https://api.themoviedb.org/3/movie/${this.id}`, {
+        params: {
+            api_key: 'bc3678651b1e8f0bd3ee98d5e1052b24',
+            language: 'en-US',
+          },
+      })
+        .then(response => {
+          this.movie = response.data;
+          this.loading = false;
+        })
+        .catch(error => {
+          console.log(error);
+          this.loading = true;
+        });
+    },
     },
   mounted() {
-    axios.get(`https://api.themoviedb.org/3/movie/${this.id}?&language=en-US`, {
-    params: {
-      api_key: 'bc3678651b1e8f0bd3ee98d5e1052b24'
-    }
-  })
-  .then(response => {
-    this.movie = response.data;
-  })
-  .catch(error => {
-    console.log(error);
-  });
+    this.fetchSingleMovie();
   },
  }
 </script>

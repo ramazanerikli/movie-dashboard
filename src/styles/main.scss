@@ -54,7 +54,6 @@
 }
 
 
-
 @media screen and (max-width: 780px) {
   .navbar-inner {
     flex-direction: column;
@@ -156,6 +155,19 @@
       font-weight: bold;
     }
   }
+}
+
+.loading-container {
+  flex: 1; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 60px);
 }
 
 .movie-poster {

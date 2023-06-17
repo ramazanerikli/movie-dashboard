@@ -1,2 +1,9 @@
-$primary: purple;
+
+/* Theming */
+$theme-colors: (
+  primary: #042541
+);
+
 $nav-link-color: #ffffffd9;
+
+@import "bootstrap";
