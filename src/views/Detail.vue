@@ -6,9 +6,9 @@
           <div class="add-favorite" :class="{ 'favorite': this.$store.getters['isMovieFavorite'](movie.id) }" @click="addToFavorite(movie)">
             <font-awesome-icon icon="fa-solid fa-heart" />
           </div>
-          <img class="movie-poster" :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`">
+          <img class="movie-poster" :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`"  @error="imageLoadError">
           <div class="vote-average position-absolute">
-             <svg class="stat-circle" :style="{ '--progress': calculateProgress(movie.vote_average)}" width="150" viewBox="0 0 20 20">
+             <svg class="stat-circle" width="150" viewBox="0 0 20 20">
                 <circle class="circle-bg" cx="10" cy="10" r="8" />
                 <circle :class="getProgressClass(movie.vote_average)" cx="10" cy="10" r="8" :style="{ 'stroke-dashoffset': calculateOffset(movie.vote_average) }" />
                 <circle class="circle-middle" cx="10" cy="10" r="7" />
@@ -74,6 +74,9 @@ const $toast = useToast();
       },
     },
   methods: {
+    imageLoadError (e) {
+      e.target.src = require("@/assets/logo.png");
+    },
     calculateOffset(score) {
         const radius = 8;
       const circumference = 2 * Math.PI * radius;
