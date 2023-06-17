@@ -13,7 +13,7 @@
           </div>
           <div class="card-body">
             <h5 class="movie-title" >{{ movie.title }}</h5>
-            <p class="release-date text-muted small">{{  movie.release_date  }}</p>
+            <p class="release-date text-muted small">{{ formattedDate  }}</p>
           </div>
       </div>
       </router-link>
@@ -34,6 +34,15 @@ const $toast = useToast();
         movie: {
             required: true
         },
+    },
+    computed: {
+      formattedDate() {
+        const releaseDate = new Date(this.movie.release_date);
+        const month = releaseDate.toLocaleString('default', { month: 'long' });
+        const day = releaseDate.getDate();
+        const year = releaseDate.getFullYear().toString().slice(-2);
+        return `${month} ${day}, ${year}`;
+      },
     },
     methods: {
         addToFavorite(movie) {

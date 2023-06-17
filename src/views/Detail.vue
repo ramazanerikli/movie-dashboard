@@ -20,7 +20,7 @@
         <div class="movie-info-field text-start">
           <h2 class="movie-title">{{movie.title}}</h2>
           <div class="d-flex movie-meta d-flex flex-wrap justify-content-start">
-            <span>{{ movie.release_date  }}</span>
+            <span>{{ formattedDate }}</span>
             <span class="text-uppercase ms-2 me-2">({{  movie.original_language  }})</span>
             <ul class="d-flex flex-row gap-3 ps-3 pe-1">
               <li v-for="(genre, index) in movie.genres" :key="index" class="me-2">
@@ -73,33 +73,15 @@ const $toast = useToast();
    }
   },
   computed: {
-      circumference() {
-      const radius = 8;
-      return 2 * Math.PI * radius;
+      formattedDate() {
+        const releaseDate = new Date(this.movie.release_date);
+        const month = releaseDate.toLocaleString('default', { month: 'long' });
+        const day = releaseDate.getDate();
+        const year = releaseDate.getFullYear().toString().slice(-2);
+        return `${month} ${day}, ${year}`;
       },
     },
   methods: {
-    imageLoadError (e) {
-      e.target.src = require("@/assets/logo.png");
-    },
-    calculateOffset(score) {
-        const radius = 8;
-      const circumference = 2 * Math.PI * radius;
-      const progress = score / 10; 
-      const offset = circumference * (1 - progress);
-      return `${offset}px`;
-    },
-    calculateProgress(score) {
-      const progress = score * 10; 
-      return `${progress}%`;
-    },
-    getProgressClass(score) {
-      return score > 7 ? 'circle-progress progress-green' : 'circle-progress progress-yellow';
-    },
-    formatPercentage(score) {
-      const roundedPercentage = Math.round(score);
-      return String(roundedPercentage);
-    },
     imageLoadError (e) {
       e.target.src = require("@/assets/logo.png");
     },
