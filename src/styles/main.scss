@@ -23,6 +23,7 @@
 .search-wrapper {
   input {
     padding-left: 40px;
+    border-radius: 20px;
   }
   .close-button {
     right: 10px;
@@ -45,10 +46,9 @@
     .nav-link {
       color: $nav-link-color;
       font-weight: bold;
-      &.active {
-        color: $nav-link-color;
-        font-weight: bold;
-      }
+    }
+    .nav-link-active {
+      color: white;
     }
   }
 }
