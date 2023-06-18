@@ -4,7 +4,7 @@
       <LoadingSpinner />
     </div>
     <div v-else>
-      <div class="row detail-inner py-4">
+      <div class="row detail-inner py-3 py-lg-5 py-md-3">
       <div class="col-lg-4">
         <div class="movie-poster-field position-relative mb-5 mb-lg-0 mb-md-0">
           <div class="add-favorite" :class="{ 'favorite': this.$store.getters['isMovieFavorite'](movie.id) }" @click="addToFavorite(movie)">
@@ -22,7 +22,7 @@
           <div class="d-flex movie-meta d-flex flex-wrap justify-content-start">
             <span>{{ formattedDate }}</span>
             <span class="text-uppercase ms-2 me-2">({{  movie.original_language  }})</span>
-            <ul class="d-flex flex-row gap-3 ps-3 pe-1">
+            <ul class="d-flex flex-row flex-wrap gap-3 ps-3 pe-1">
               <li v-for="(genre, index) in movie.genres" :key="index" class="me-2">
                 <span>{{  genre.name  }}</span>
               </li>

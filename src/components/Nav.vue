@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg py-3">
     <div class="container-sm">
       <div class="navbar-inner w-100">
       <ul class="navbar-nav mb-2 mb-lg-0">
