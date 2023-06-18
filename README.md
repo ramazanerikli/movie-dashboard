@@ -1,6 +1,6 @@
 # Movie Dashboard
 
-A [movie dashboard app](https://vue-beta-orcin.vercel.app) which allows users to view movie data.
+![Alt Text](preview-2.png)
 
 ## Implemented Features
 
