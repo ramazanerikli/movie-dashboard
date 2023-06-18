@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="loading" class="loading-container">
+    <div v-if="loading" class="loading-container vh-100">
       <LoadingSpinner />
     </div>
     <div v-else>
@@ -38,15 +38,6 @@
             </p>
             <h5 class="sub-title my-2">Tagline</h5>
             <span class="fst-italic">{{  movie.tagline  }}</span>
-            <h5 class="sub-title my-4">Production Companies</h5>
-            <!--<ul class="companies-list list-unstyled d-flex flex-wrap justify-content-lg-start justify-content-center justify-content-md-center">
-              <li v-for="(company, index) in movie.production_companies" :key="index">
-                <div class="company-logo">
-                  <img class="thumb" :src="`https://image.tmdb.org/t/p/w500/${company.logo_path}`" @error="imageLoadError">
-                </div>
-              </li>
-            </ul>
-          -->
           </div>
         </div>
       </div>
@@ -76,7 +67,6 @@ const $toast = useToast();
     movie: [],
     loading: true,
     movieBackdropPath: '' 
-
    }
   },
   computed: {
