@@ -55,8 +55,6 @@
 
 .single-custom-bg {
   background-image: linear-gradient(to right, rgba(31.5, 10.5, 10.5, 1) calc((50vw - 170px) - 340px), rgba(31.5, 10.5, 10.5, 0.84) 50%, rgba(31.5, 10.5, 10.5, 0.84) 100%);
-  padding-left: 40px;
-  padding-right: 40px;
   min-height: calc(100vh - 60px);
   display: flex;
   align-items: center;
@@ -65,6 +63,9 @@
     background-position: left calc((50vw - 170px) - 340px) top;
     background-size: cover;
     background-repeat: no-repeat;
+    .page-container {
+      justify-content: center;
+    }
 }
 
 
