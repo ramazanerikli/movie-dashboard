@@ -1,10 +1,12 @@
 <template>
-  <div class="page-container container-sm">
+  <div>
     <div v-if="loading" class="loading-container">
       <LoadingSpinner />
     </div>
     <div v-else>
-      <div class="row detail-inner py-3 py-lg-5 py-md-3">
+      <div class="single-container"  :style='{ backgroundImage: `url(${movieBackdropPath})` }'>
+        <div class="single-custom-bg" >
+          <div class="row detail-inner text-white py-3 py-lg-5 py-md-3">
       <div class="col-lg-4">
         <div class="movie-poster-field position-relative mb-5 mb-lg-0 mb-md-0">
           <div class="add-favorite" :class="{ 'favorite': this.$store.getters['isMovieFavorite'](movie.id) }" @click="addToFavorite(movie)">
@@ -37,17 +39,20 @@
             <h5 class="sub-title my-2">Tagline</h5>
             <span class="fst-italic">{{  movie.tagline  }}</span>
             <h5 class="sub-title my-4">Production Companies</h5>
-            <ul class="companies-list list-unstyled d-flex flex-wrap justify-content-lg-start justify-content-center justify-content-md-center">
+            <!--<ul class="companies-list list-unstyled d-flex flex-wrap justify-content-lg-start justify-content-center justify-content-md-center">
               <li v-for="(company, index) in movie.production_companies" :key="index">
                 <div class="company-logo">
                   <img class="thumb" :src="`https://image.tmdb.org/t/p/w500/${company.logo_path}`" @error="imageLoadError">
                 </div>
               </li>
             </ul>
+          -->
           </div>
         </div>
       </div>
     </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -70,6 +75,8 @@ const $toast = useToast();
     id: this.$route.params.Mid,
     movie: [],
     loading: true,
+    movieBackdropPath: '' 
+
    }
   },
   computed: {
@@ -120,6 +127,7 @@ const $toast = useToast();
       })
         .then(response => {
           this.movie = response.data;
+          this.movieBackdropPath = `https://image.tmdb.org/t/p/original/${response.data.backdrop_path}`;
           this.loading = false;
         })
         .catch(error => {
