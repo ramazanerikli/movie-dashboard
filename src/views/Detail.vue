@@ -6,7 +6,7 @@
     <div v-else>
       <div class="single-container"  :style='{ backgroundImage: `url(${movieBackdropPath})` }'>
         <div class="single-custom-bg" >
-          <div class="page-container container-sm">
+          <div class="page-container mt-lg-0 container-sm">
             <div class="row detail-inner text-white py-3 py-lg-5 py-md-3">
       <div class="col-lg-4">
         <div class="movie-poster-field position-relative mb-5 mb-lg-0 mb-md-0">
