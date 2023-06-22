@@ -95,7 +95,7 @@ const $toast = useToast();
           store.commit('removeFavoriteMovie', movie.id);
           $toast.open({
             message: `${movie.title} was removed from your favorite list`,
-            type: "success",
+            type: "error",
             duration: 3000,
             dismissible: true
           })
